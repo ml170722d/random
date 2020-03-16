@@ -275,42 +275,10 @@
               </ul>
         </nav>
         <main id="demo">
-            <div></div>
+            <div id="map" ></div>
         </main>
 
-        <script>
-            let guest= document.getElementById("guest");
-            let user = document.getElementById("user");
-            
-            function singOut(){
-                guest.style.visibility = "visible";
-                user.style.visibility = "hidden";
-            }
-
-            function singIn(){
-                guest.style.visibility = "hidden";
-                user.style.visibility = "visible";
-            }
-
-            function singUp(){
-                guest.style.visibility = "hidden";
-                user.style.visibility = "visible";
-            }
-
-            function init(){
-                let parameters = location.search.substring(1);
-                let tmp = parameters.split("="),
-                    fun = unescape(tmp[0]),
-                    val = unescape(tmp[1]);
-
-                if (parameters == "") return;
-                
-                if (val == "guest"){
-                    singOut();
-                }else if (val == "user"){
-                    singIn();
-                }
-            }
-        </script>
+        <script src="./OpenLayers.js"></script>
+        <script src="./main_page.js"></script>
     </body>
 </html>

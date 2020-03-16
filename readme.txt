@@ -25,3 +25,4 @@ folder:
 
 trenutno stanje foldera i fajlova:
 	u izradi; treba ubaciti mapu, implementirati funkcionalnosti i testirati resenje (15.03.2020.)
+	u main_page.html dodata mapa; javlja se [Intervention] greska u konzoli koja ne smeta pri zoom-in-u i zoom-out-u; treba popraviti to (15.03.2020.)
