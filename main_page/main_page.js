@@ -1,7 +1,15 @@
-let guest= document.getElementById("guest");
+/**
+ * 
+ * 
+ * 
+ */
+
+
+
+let guest = document.getElementById("guest");
 let user = document.getElementById("user");
 
-let content;
+const map = new Map();
 
 function init(){
     let parameters = location.search.substring(1);
@@ -9,8 +17,7 @@ function init(){
         fun = unescape(tmp[0]),
         val = unescape(tmp[1]);
     
-    content = new Map();
-    setCurrentPosition(content);
+    setCurrentPosition(map);
                 
     if (val == "guest" || parameters == ""){
         singOut();
