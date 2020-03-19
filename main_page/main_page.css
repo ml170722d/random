@@ -46,7 +46,7 @@ main{
     background-color: var(--bg-primary);
     transition: var(--transition-speed) ease;
     border-collapse: collapse;
-    z-index: 1005;
+    z-index: 1100;
 }
 
 .navbar-nav{
