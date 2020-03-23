@@ -3,13 +3,11 @@
  * 
  * 
  */
-
-
-
 let guest = document.getElementById("guest");
 let user = document.getElementById("user");
+let divSwitcher;
 
-const map = new Map();
+let map;
 
 function init(){
     let parameters = location.search.substring(1);
@@ -17,13 +15,20 @@ function init(){
         fun = unescape(tmp[0]),
         val = unescape(tmp[1]);
     
-    setCurrentPosition(map);
+    //setCurrentPosition(map);
                 
     if (val == "guest" || parameters == ""){
         singOut();
     }else if (val == "user"){
         singIn();
     }
+    map = createMap();
+
+    divSwitcher = document.getElementById("map").children[0].children[6];
+    //divSwitcher.style.display = "none";
+    divSwitcher = divSwitcher.children[0].children[3];
+    //console.log(divSwitcher);
+    console.log(map.layers);
 }  
 
 function singOut(){
@@ -37,23 +42,46 @@ function singIn(){
 }
 
 function singUp(){
-    guest.style.visibility = "hidden";
-    user.style.visibility = "visible";
+   singIn();
 }
 
-function Map(){
-    this.map = new OpenLayers.Map("map");
-    this.map.addLayer(new OpenLayers.Layer.OSM());
+function search(){
+
+}
+
+function togglePlants(){
+    
+}
+
+function toggleOffice(){
+
+}
+
+function toggleLandfills(){
+
+}
+
+function toggleMarkedLocations(){
+    
+}
+
+
+
+
+function createMap(){
+    map = new OpenLayers.Map("map");
+    map.addLayer(new OpenLayers.Layer.OSM());
     
 
-    this.map.addControls([
+    map.addControls([
         new OpenLayers.Control.MousePosition(),
         new OpenLayers.Control.ScaleLine(),
-        new OpenLayers.Control.LayerSwitcher(),
+        new OpenLayers.Control.LayerSwitcher({ ascending: false }),
         new OpenLayers.Control.Navigation(),
         new OpenLayers.Control.Permalink({ anchor: true })
     ]);
 
+    
     let markers = [
         [44.864166, 20.651177, 'Main office'],
         [44.871163, 20.638895, 'Main office'],
@@ -73,11 +101,11 @@ function Map(){
     ];
 
     epsg4326 = new OpenLayers.Projection("EPSG:4326");
-    projectTo = this.map.getProjectionObject(); //The map projection (Spherical Mercator)
+    projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
     let lonLat = new OpenLayers.LonLat(8.0, 50.3).transform(epsg4326, projectTo);
     let zoom = 7;
-    if (!this.map.getCenter()) {
-        this.map.setCenter(lonLat, zoom);
+    if (!map.getCenter()) {
+        map.setCenter(lonLat, zoom);
     }
   
     // Put your point-definitions here
@@ -110,13 +138,14 @@ function Map(){
     }
   
     for (let i = 0; i < layerName.length; i++) {
-        this.map.addLayer(vectorLayer[i]);
+        map.addLayer(vectorLayer[i]);
     }
+    return map;
 }
 
 function setCurrentPosition(content){
 
-    navigator.geolocation.getCurrentPosition(function success(pos){
+    /*navigator.geolocation.getCurrentPosition(function success(pos){
         let position = new OpenLayers.LonLat(pos.coords.longitude, pos.coords.latitude).transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")),
             zoom = 10;
         content.map.setCenter(position, zoom);
@@ -129,5 +158,5 @@ function setCurrentPosition(content){
         timeout: 1000,
         maximumAge: 0
 
-    });
+    });*/
 }
