@@ -5,7 +5,7 @@
  */
 let guest = document.getElementById("guest");
 let user = document.getElementById("user");
-let divSwitcher;
+let divSwitcher, mainOffieceInput, outpostsInput, landfillInput;
 
 let map;
 
@@ -15,7 +15,7 @@ function init(){
         fun = unescape(tmp[0]),
         val = unescape(tmp[1]);
     
-    //setCurrentPosition(map);
+    setCurrentPosition(map);
                 
     if (val == "guest" || parameters == ""){
         singOut();
@@ -28,7 +28,6 @@ function init(){
     //divSwitcher.style.display = "none";
     divSwitcher = divSwitcher.children[0].children[3];
     //console.log(divSwitcher);
-    console.log(map.layers);
 }  
 
 function singOut(){
@@ -46,23 +45,27 @@ function singUp(){
 }
 
 function search(){
-
+    dontWork();
 }
 
-function togglePlants(){
-    
+function toggleOutposts(){
+    dontWork();
 }
 
 function toggleOffice(){
-
+    dontWork();
 }
 
 function toggleLandfills(){
-
+    dontWork();
 }
 
 function toggleMarkedLocations(){
-    
+    dontWork();
+}
+
+function dontWork(){
+    alert("Sorry, not implemented yet");
 }
 
 
@@ -76,7 +79,7 @@ function createMap(){
     map.addControls([
         new OpenLayers.Control.MousePosition(),
         new OpenLayers.Control.ScaleLine(),
-        new OpenLayers.Control.LayerSwitcher({ ascending: false }),
+        new OpenLayers.Control.LayerSwitcher(),
         new OpenLayers.Control.Navigation(),
         new OpenLayers.Control.Permalink({ anchor: true })
     ]);
@@ -109,10 +112,10 @@ function createMap(){
     }
   
     // Put your point-definitions here
-  
+    let radius = 4;
     let look = ["red", "blue", "yellow"];
     let layerName = [markers[0][2]];
-    let styleArray = [new OpenLayers.StyleMap({ pointRadius: 6, fillColor: look[0], fillOpacity: 0.5 })];
+    let styleArray = [new OpenLayers.StyleMap({ pointRadius: radius, fillColor: look[0], fillOpacity: 0.5 })];
     let vectorLayer = [new OpenLayers.Layer.Vector(layerName[0], { styleMap: styleArray[0] })];		// First element defines first Layer
   
     let j = 0;
@@ -120,7 +123,7 @@ function createMap(){
         if (!layerName.includes(markers[i][2])) {
             j++;
             layerName.push(markers[i][2]);															// If new layer name found it is created
-            styleArray.push(new OpenLayers.StyleMap({ pointRadius: 6, fillColor: look[j % look.length], fillOpacity: 0.5 }));
+            styleArray.push(new OpenLayers.StyleMap({ pointRadius: radius, fillColor: look[j % look.length], fillOpacity: 0.5 }));
             vectorLayer.push(new OpenLayers.Layer.Vector(layerName[j], { styleMap: styleArray[j] }));
         }
     }
@@ -145,10 +148,10 @@ function createMap(){
 
 function setCurrentPosition(content){
 
-    /*navigator.geolocation.getCurrentPosition(function success(pos){
+    navigator.geolocation.getCurrentPosition(function success(pos){
         let position = new OpenLayers.LonLat(pos.coords.longitude, pos.coords.latitude).transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")),
             zoom = 10;
-        content.map.setCenter(position, zoom);
+        content.setCenter(position, zoom);
 
     },function error(err){
         throw Error("greska");
@@ -158,5 +161,5 @@ function setCurrentPosition(content){
         timeout: 1000,
         maximumAge: 0
 
-    });*/
+    });
 }

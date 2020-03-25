@@ -4,22 +4,18 @@
         <meta charset="utf-8">
         <title>EKO Patrol - Register</title>
         <link rel="stylesheet" href="./login_register.css">
+        <link rel="stylesheet" href="./login_register.js">
     </head>
 
     <body>
-        <form class="box">
+        <form class="box" autocomplete="off" id="reg">
             <h1>Register</h1>
-            <input type="text" name="" placeholder="Username" id="u" required>
-            <input type="text" name="" placeholder="email" id="e" required>
-            <input type="password" name="" placeholder="Password" id="p" required>
-            <input type="password" name="" placeholder="Repeat password" id="rp" required>
-            <input type="submit" name="" value="Register" onclick="check()">
+            <input type="text" name="user" placeholder="Username" id="u" required>
+            <input type="text" name="email" placeholder="email" id="e" required>
+            <input type="password" name="pass" placeholder="Password" id="p" required>
+            <input type="password" name="rPass" placeholder="Repeat password" id="rp" required>
+            <button onclick="signUp(FormData)">Register</button>
+            <span class="text">Already registred? </span><a href="#" class="text">Login</a>
         </form>
-
-        <script>
-            function check(){
-                
-            }
-        </script>
     </body>
 </html>
