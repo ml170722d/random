@@ -3,12 +3,13 @@
  * 
  * 
  */
-let guest = document.getElementById("guest");
-let user = document.getElementById("user");
-let divSwitcher, mainOffieceInput, outpostsInput, landfillInput;
+let guest = document.getElementById("guest"); //get navBar for guest
+let user = document.getElementById("user"); //get navBar for user
+//let divSwitcher, mainOffieceInput, outpostsInput, landfillInput;
 
 let map;
 
+//initialization of map for webpage
 function init(){
     let parameters = location.search.substring(1);
     let tmp = parameters.split("="),
@@ -23,13 +24,9 @@ function init(){
         singIn();
     }
     map = createMap();
-
-    divSwitcher = document.getElementById("map").children[0].children[6];
-    //divSwitcher.style.display = "none";
-    divSwitcher = divSwitcher.children[0].children[3];
-    //console.log(divSwitcher);
 }  
 
+//probably need to change this solution
 function singOut(){
     guest.style.visibility = "visible";
     user.style.visibility = "hidden";
@@ -44,6 +41,8 @@ function singUp(){
    singIn();
 }
 
+
+//need help with this things
 function search(){
     dontWork();
 }
@@ -70,7 +69,7 @@ function dontWork(){
 
 
 
-
+//TODO: need to make this function better
 function createMap(){
     map = new OpenLayers.Map("map");
     map.addLayer(new OpenLayers.Layer.OSM());

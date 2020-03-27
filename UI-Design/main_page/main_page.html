@@ -6,11 +6,11 @@
         <link rel="icon" href="about_us/slike/logo.jpg"> <!--Tab Ikonica-->
     </head>
     <body onload="init()">
-
+      <!--Navigation bar for Guest-->
       <nav class="navbar" id="guest">
         <ul class="navbar-nav">
           <li class="logo">
-            <a href="#" class="nav-link">     <!-- link to page -->
+            <a href="#" class="nav-link">     <!-- no need for link to page -->
               <span class="link-text logo-text">ECO Patrol</span>
               <svg
                 aria-hidden="true"
@@ -38,7 +38,7 @@
           </li>
     
           <li class="nav-item">
-            <a href="../loading/loading.html?fun=singIn" class="nav-link" onclick="singIn()">     <!-- link to page -->
+            <a href="../login_register/login.html" class="nav-link" onclick="singIn()">     <!-- link to Login page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -57,7 +57,7 @@
           </li>
     
           <li class="nav-item">
-            <a href="../login_register/register.html" class="nav-link" onclick="singUp()">     <!-- link to page -->
+            <a href="../login_register/register.html" class="nav-link" onclick="singUp()">     <!-- link to Register page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -77,7 +77,7 @@
           </li>
 
           <li class="nav-item">
-              <a href="#" class="nav-link" onclick="search()">     <!-- link to page -->
+              <a href="#" class="nav-link" onclick="search()">     <!-- no need for link to page -->
                   <svg 
                     aria-hidden="true" 
                     focusable="false" 
@@ -97,7 +97,7 @@
             </li>
     
           <li class="nav-item">
-            <a href="about_us/about_us.html" class="nav-link" target="_blank">     <!-- link to page -->
+            <a href="../about_us/about_us.html" class="nav-link" target="_blank">     <!-- link to About us page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -117,11 +117,12 @@
           </li>
         </ul>
       </nav>
-      
+
+      <!--Navigation bar for User-->
       <nav class="navbar" id="user">
         <ul class="navbar-nav">
           <li class="logo">
-            <a href="#" class="nav-link">     <!-- link to page -->
+            <a href="#" class="nav-link">     <!-- no need for link to page -->
               <span class="link-text logo-text">ECO Patrol</span>
               <svg
                 aria-hidden="true"
@@ -149,7 +150,7 @@
           </li>
     
           <li class="nav-item">
-            <a href="../loading/loading.html?fun=singOut" class="nav-link" onclick="singOut()">     <!-- link to page -->
+            <a href="#" class="nav-link" onclick="singOut()">     <!-- link to main page for guest-->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -169,7 +170,7 @@
           </li>
     
           <li class="nav-item">
-            <a href="#" class="nav-link">     <!-- link to page -->
+            <a href="#" class="nav-link">     <!-- link to Account page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -189,7 +190,7 @@
           </li>
 
           <li class="nav-item">
-              <a href="#" class="nav-link" onclick="search()">     <!-- link to page -->
+              <a href="#" class="nav-link" onclick="search()">     <!-- no need for link to page -->
                   <svg 
                     aria-hidden="true" 
                     focusable="false" 
@@ -210,7 +211,7 @@
           </li>
 
           <li class="nav-item">
-              <a href="#" class="nav-link" onclick="toggleOutposts()">     <!-- link to page -->
+              <a href="#" class="nav-link" onclick="toggleOutposts()">     <!-- no need for link to page -->
                 <svg 
                   aria-hidden="true" 
                   focusable="false" 
@@ -230,30 +231,28 @@
           </li>
 
           <li class="nav-item">
-            <label>
-              <a href="#" class="nav-link" onclick="toggleOffice()">     <!-- link to page -->
-                  <svg 
-                    class="myClass"
-                    aria-hidden="true" 
-                    focusable="false" 
-                    data-prefix="fas" 
-                    data-icon="thumbtack" 
-                    class="svg-inline--fa fa-thumbtack fa-w-12" 
-                    role="img" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 384 512"
-                    ><path 
-                      fill="currentColor" 
-                      d="M298.028 214.267L285.793 96H328c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v48c0 13.255 10.745 24 24 24h42.207L85.972 214.267C37.465 236.82 0 277.261 0 328c0 13.255 10.745 24 24 24h136v104.007c0 1.242.289 2.467.845 3.578l24 48c2.941 5.882 11.364 5.893 14.311 0l24-48a8.008 8.008 0 0 0 .845-3.578V352h136c13.255 0 24-10.745 24-24-.001-51.183-37.983-91.42-85.973-113.733z"
-                    ></path>
-                  </svg>
-                <span class="link-text">Main office</span>
-              </a>
-            </label>
+            <a href="#" class="nav-link" onclick="toggleOffice()">     <!-- no need for link to page -->
+                <svg 
+                  class="myClass"
+                  aria-hidden="true" 
+                  focusable="false" 
+                  data-prefix="fas" 
+                  data-icon="thumbtack" 
+                  class="svg-inline--fa fa-thumbtack fa-w-12" 
+                  role="img" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 384 512"
+                  ><path 
+                    fill="currentColor" 
+                    d="M298.028 214.267L285.793 96H328c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v48c0 13.255 10.745 24 24 24h42.207L85.972 214.267C37.465 236.82 0 277.261 0 328c0 13.255 10.745 24 24 24h136v104.007c0 1.242.289 2.467.845 3.578l24 48c2.941 5.882 11.364 5.893 14.311 0l24-48a8.008 8.008 0 0 0 .845-3.578V352h136c13.255 0 24-10.745 24-24-.001-51.183-37.983-91.42-85.973-113.733z"
+                  ></path>
+                </svg>
+              <span class="link-text">Main office</span>
+            </a>
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link" onclick="toggleLandfills()">     <!-- link to page -->
+            <a href="#" class="nav-link" onclick="toggleLandfills()">     <!-- no need for link to page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -273,7 +272,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link" onclick="toggleMarkedLocations()">     <!-- link to page -->
+            <a href="#" class="nav-link" onclick="toggleMarkedLocations()">     <!-- no need for link to page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
@@ -293,7 +292,7 @@
           </li>
     
           <li class="nav-item">
-            <a href="about_us/about_us.html" class="nav-link" target="_blank">     <!-- link to page -->
+            <a href="about_us/about_us.html" class="nav-link" target="_blank">     <!-- link to About us page -->
               <svg 
                 aria-hidden="true" 
                 focusable="false" 
