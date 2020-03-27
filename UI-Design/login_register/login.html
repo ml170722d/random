@@ -5,15 +5,16 @@
         <title>EKO Patrol - Login</title>
         <link rel="stylesheet" href="./login_register.css">
         <script src="./login_register.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
 
     <body>
-        <form class="box">
+        <form class="box" name="loginForm" autocomplete="off">
             <h1>Login</h1>
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
-            <button>Login</button>
-            <span class="text">Not registred? </span><a href="#" class="text">Regster</a>
+            <button type="button" onclick="login()">Login</button>
+            <span class="text">Not registred? </span><a href="./register.html" class="text">Regster</a> <!-- link to Register page -->
         </form>
     </body>
 </html>

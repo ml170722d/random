@@ -1,26 +1,40 @@
-function reg(){
-    document.getElementById("register").style.display = "inline";
-    document.getElementById("login").style.display = "none";
-}
-
 function login(){
-    document.getElementById("register").style.display = "none";
-    document.getElementById("login").style.display = "inline";
-}
+    if (document.loginForm.username.value == "" || document.loginForm.password.value == ""){
+        alert("Username or password not filled!");
+        return;
+    }
 
-function init(){
-    login();
-}
+    var express = require('express');
+    var mysql = require('mysql');
 
-function signUp(formData){
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'luka',
+        password: '123',
+        database: 'ecopatroldb'
+    });
+    connection.connect(function(error){
+        if (!!error){
+            console.log('Error');
+        }else{
+            console.log('connected');
+        }
+    });
     
-    console.log("cao");
 }
 
-function signIn(){
-    console.log("hello");
-}
 
-function check(){
+function registration(){
+    if (document.registration.user.value == "" || document.registration.email.value == "" ||
+    document.registration.pass.value == "" || document.registration.rPass.value == ""){
+        alert("One or more fields are not filled!");
+        return;
+    }
+
+    if (document.registration.pass.value == document.registration.rPass.value){
+        alert("Passpord and Repeat password fields do not match!");
+        return;
+    }
+    
 
 }
