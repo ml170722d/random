@@ -5,6 +5,12 @@ function login(){
     }
 
     //waiting for backend to suport for login
+
+
+
+
+    //if user exists and password is corect, open user main_page
+    window.location.href = "../main_page/main_page.html?user";
 }
 
 

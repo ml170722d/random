@@ -16,9 +16,8 @@ function init(){
     //TODO: make apropriate page parametar function/handler
     let parameters = location.search.substring(1);
     let tmp = parameters.split("="),
-        fun = unescape(tmp[0]),
-        val = unescape(tmp[1]);
-              
+        val = unescape(tmp[0]);
+
     if (val == "guest" || parameters == ""){
         singOut();
     }else if (val == "user"){
@@ -80,7 +79,7 @@ function singUp(){
 
 //need help with this things
 //TODO: implementation of functions
-function search(){
+function findLocation(){
     dontWork();
 }
 
