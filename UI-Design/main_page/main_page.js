@@ -1,35 +1,67 @@
 /**
- * 
- * 
+ * This document is work in progress
+ * Subjected to change in future
+ *      'TODO' -> tasks that need to be done
  * 
  */
-let guest = document.getElementById("guest");
-let user = document.getElementById("user");
-let divSwitcher, mainOffieceInput, outpostsInput, landfillInput;
+let guest = document.getElementById("guest"); //get navBar for guest
+let user = document.getElementById("user"); //get navBar for user
 
-let map;
+var timer;
+var map;
 
+//initialization of map for webpage
 function init(){
+
+    //TODO: make apropriate page parametar function/handler
     let parameters = location.search.substring(1);
     let tmp = parameters.split("="),
-        fun = unescape(tmp[0]),
-        val = unescape(tmp[1]);
-    
-    setCurrentPosition(map);
-                
+        val = unescape(tmp[0]);
+
     if (val == "guest" || parameters == ""){
         singOut();
     }else if (val == "user"){
         singIn();
     }
-    map = createMap();
 
-    divSwitcher = document.getElementById("map").children[0].children[6];
-    //divSwitcher.style.display = "none";
-    divSwitcher = divSwitcher.children[0].children[3];
-    //console.log(divSwitcher);
+
+    map = createMap();
+    setCurrentPosition(map);
+
+
+    //console.log(document.getElementById('map').children[0]);
+    document.getElementById('map').children[0].addEventListener("mousedown", handleMouseDown, false);//mouse long press handler; listener to start timer
+    document.getElementById('map').children[0].addEventListener("mouseup", handleMouseUp, false); //listener to reset timer if released befor end of timeout
+    document.getElementById('map').children[0].addEventListener("mousemove", handleMouseUp, false); //listener to reset timer if map moved with cursor 
+
+
 }  
 
+//starts timer after dilay
+function handleMouseDown(event){
+    if (event.which != 1) return;   //simple event filter
+    //console.log(event);
+
+    timer = window.setTimeout(function(){
+        //insert code you want to execute here
+        //TODO: markes selected location on map and possiblly something more
+        console.log("Hello world");
+
+
+    }, 700); //change delay of labmbda function execution (in ms) 
+}
+
+//reset timer
+function handleMouseUp(event){
+    if (event.which != 1 || (event.type == "mousemove" && event.which != 1)) return;   //simple event filter
+    //console.log(event);
+
+    clearTimeout(timer);
+}
+
+
+//probably need to change this solution
+//TODO: make better solution
 function singOut(){
     guest.style.visibility = "visible";
     user.style.visibility = "hidden";
@@ -44,7 +76,10 @@ function singUp(){
    singIn();
 }
 
-function search(){
+
+//need help with this things
+//TODO: implementation of functions
+function findLocation(){
     dontWork();
 }
 
@@ -70,7 +105,7 @@ function dontWork(){
 
 
 
-
+//TODO: better 'constructor' function needed
 function createMap(){
     map = new OpenLayers.Map("map");
     map.addLayer(new OpenLayers.Layer.OSM());
@@ -135,7 +170,7 @@ function createMap(){
         let feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point(lon, lat).transform(epsg4326, projectTo),
             { description: "marker number " + i }
-            // see http://dev.openlayers.org/docs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.Constants for more options
+            //see http://dev.openlayers.org/docs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.Constants for more options
         );
         vectorLayer[layerName.indexOf(markers[i][2])].addFeatures(feature);
     }
@@ -143,23 +178,24 @@ function createMap(){
     for (let i = 0; i < layerName.length; i++) {
         map.addLayer(vectorLayer[i]);
     }
+
+
+
     return map;
 }
 
+//at this moment doesn't need changing
 function setCurrentPosition(content){
 
     navigator.geolocation.getCurrentPosition(function success(pos){
         let position = new OpenLayers.LonLat(pos.coords.longitude, pos.coords.latitude).transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")),
             zoom = 10;
         content.setCenter(position, zoom);
-
     },function error(err){
-        throw Error("greska");
-
+        throw Error("Error with finding current position");
     },{
         enableHighAccuracy: true,
         timeout: 1000,
         maximumAge: 0
-
     });
 }

@@ -1,4 +1,6 @@
 :root{
+
+    /*all parameters that can be changed on the fly*/
     font-size: 16px;
     font-family: 'Open Sans';
     --txt-primary: #2dcc18;
@@ -6,7 +8,6 @@
     --bg-primary: #232e2c;
     --bg-secondary: #141518;
 
-    /*my variables*/
     --scrollbar-track-color:  #1e1e24;
     --scrollbar-thumb-color: #12725d;
     --svg-color-primary: #7effa5;
@@ -40,6 +41,9 @@ main{
     margin-left: var(--navbar-size);
     padding: 0px;   
 }
+
+/*--------------------------------------------------------*/
+/*class*/
 
 .navbar{
     position: fixed; 
@@ -133,6 +137,8 @@ main{
     transform: rotate(-180deg);
 }
 /*--------------------------------------------------------*/
+/*id*/
+
 #guest{
     visibility: visible;
 }
