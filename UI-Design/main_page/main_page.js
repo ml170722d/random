@@ -2,27 +2,21 @@
  * This document is work in progress
  * Subjected to change in future
  *      'TODO' -> tasks that need to be done
- * 
+ *      'NOTE' -> note about idea for some parte of code
  */
-let guest = document.getElementById("guest"); //get navBar for guest
-let user = document.getElementById("user"); //get navBar for user
+var guest = document.getElementById("guest"); //get navBar for guest
+var user = document.getElementById("user"); //get navBar for user
 
-var timer;
-var map;
+var timer, map;
+
+//NOTE: this should be resolved with addEventListener and removeEventListener, but don't know how
+var listenerActive; //boolean to activate or deactivate added event listeners (primitive way, but at this point don't know better)
 
 //initialization of map for webpage
 function init(){
 
     //TODO: make apropriate page parametar function/handler
-    let parameters = location.search.substring(1);
-    let tmp = parameters.split("="),
-        val = unescape(tmp[0]);
-
-    if (val == "guest" || parameters == ""){
-        singOut();
-    }else if (val == "user"){
-        singIn();
-    }
+    resolveParameters(location.search.substring(1));
 
 
     map = createMap();
@@ -37,8 +31,30 @@ function init(){
 
 }  
 
-//starts timer after dilay
+function resolveParameters(param){
+    let array = param.split("#");
+
+    for (let i = 0; i < array.length; i++){
+        array[i] = array[i].split("=");
+    }
+
+    if (array[0][0] == "guest" || param == ""){
+        //guest ui
+        guest.style.visibility = "visible";
+        user.style.visibility = "hidden";
+        listenerActive = false;
+
+    }else if (array[0][0] == "user"){
+        //user ui
+        guest.style.visibility = "hidden";
+        user.style.visibility = "visible";
+        listenerActive = true;
+    }
+}
+
+//starts timer, after dilay executes lambda function
 function handleMouseDown(event){
+    if (!listenerActive) return;    //guest can't use this listener, only user can
     if (event.which != 1) return;   //simple event filter
     //console.log(event);
 
@@ -59,23 +75,18 @@ function handleMouseUp(event){
     clearTimeout(timer);
 }
 
-
-//probably need to change this solution
-//TODO: make better solution
+//if needed, can be used
 function singOut(){
-    guest.style.visibility = "visible";
-    user.style.visibility = "hidden";
+
 }
 
 function singIn(){
-    guest.style.visibility = "hidden";
-    user.style.visibility = "visible";
+
 }
 
 function singUp(){
-   singIn();
-}
 
+}
 
 //need help with this things
 //TODO: implementation of functions
