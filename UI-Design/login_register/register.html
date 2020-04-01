@@ -1,21 +1,25 @@
-<!-- LOGIN page -->
+<!-- Register page -->
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>EKO Patrol - Register</title>
+        <title>ECO Patrol - Register</title>
         <link rel="stylesheet" href="./login_register.css">
-        <link rel="stylesheet" href="./login_register.js">
+        
     </head>
 
     <body>
-        <form class="box" autocomplete="off" id="reg">
+        <form class="box" autocomplete="off" name="regForm">
             <h1>Register</h1>
             <input type="text" name="user" placeholder="Username" id="u" required>
             <input type="text" name="email" placeholder="email" id="e" required>
             <input type="password" name="pass" placeholder="Password" id="p" required>
             <input type="password" name="rPass" placeholder="Repeat password" id="rp" required>
-            <button onclick="signUp(FormData)">Register</button>
-            <span class="text">Already registred? </span><a href="#" class="text">Login</a>
+            <button type="button" onclick="registration()">Register</button>
+            <span class="text">Already registred? </span><a href="./login.html" class="text">Login</a>  <!--link to Login page-->
         </form>
+
+        <!-- scripts needed to work -->
+        <script src="./login_register.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </body>
 </html>

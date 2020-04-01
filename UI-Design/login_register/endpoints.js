@@ -1,3 +1,4 @@
+
 // ovo je primer jednog poziva GET endpointa
 //nije ispravna u ovom trenutku
 function fetchSomething() {
@@ -35,4 +36,6 @@ function persistSomething(data) {
         }
         });
     });
+
+
 }
